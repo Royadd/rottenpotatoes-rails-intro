@@ -18,6 +18,7 @@ class MoviesController < ApplicationController
         @css_class_title='hilite bg_warning'
       else
         @css_class_date='hilite bg_warning'
+      end
       #@css_class_2='.bg_warning'
     end
 
