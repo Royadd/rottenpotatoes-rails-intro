@@ -17,4 +17,5 @@ class Movie < ActiveRecord::Base
       ratings_list=ratings_list.map(&:upcase)
       Movie.where(rating:ratings_list)
     end
+  end
 end
