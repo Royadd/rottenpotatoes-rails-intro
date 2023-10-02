@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
     end
     @movies = Movie.with_ratings(@ratings_to_show,session[:sort_key])
     #@ratings_to_show = params[:ratings].keys
-    redirect_to movies_path(movies_path(sort_key: session[:sort_key], ratings: (Hash[@ratings_to_show.map { |key| [key, 1] }] if @ratings_to_show!=nil), home: (params[:home] if params[:home]!=nil)))
+    redirect_to movies_path(sort_key: session[:sort_key], ratings: (Hash[@ratings_to_show.map { |key| [key, 1] }] if @ratings_to_show!=nil), home: (params[:home] if params[:home]!=nil))
   end
 
   def new
