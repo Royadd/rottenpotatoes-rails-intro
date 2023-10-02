@@ -7,7 +7,7 @@ class Movie < ActiveRecord::Base
     ratings
   end
 
-  def self.with_ratings(ratings_list)
+  def self.with_ratings(ratings_list,sort_key)
     # if ratings_list is an array such as ['G', 'PG', 'R'], retrieve all
     #  movies with those ratings
     # if ratings_list is nil, retrieve ALL movies
@@ -16,6 +16,11 @@ class Movie < ActiveRecord::Base
     else
       ratings_list=ratings_list.map(&:upcase)
       Movie.where(rating:ratings_list)
+      if sort_key==nil
+        Movie.where(rating:ratings_list)
+      else
+        Movie.where(rating:ratings_list).order(sort_key)
+      end
     end
   end
 end
