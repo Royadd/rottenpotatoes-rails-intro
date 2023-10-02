@@ -14,11 +14,7 @@ class MoviesController < ApplicationController
     end
     if params[:sort_key]!=nil
       session[:sort_key]=params[:sort_key]
-      if session[:sort_key]=="title"
-        @css_class_title='bg_warning'
-      else
-        @css_class_date='bg_warning'
-      end
+      @sort_column=session[:sort_key]
       #@css_class_2='.bg_warning'
     end
 
