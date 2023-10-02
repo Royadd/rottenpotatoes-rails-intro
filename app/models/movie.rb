@@ -12,11 +12,14 @@ class Movie < ActiveRecord::Base
     #  movies with those ratings
     # if ratings_list is nil, retrieve ALL movies
     if ratings_list==nil or ratings_list==[]
-      Movie.all
+      if sort_key==nil
+        Movie.all
+      else
+        Movie.order(sort_key)
+      end
     else
       ratings_list=ratings_list.map(&:upcase)
-      Movie.where(rating:ratings_list)
-      if sort_key!=nil
+      if sort_key==nil
         Movie.where(rating:ratings_list)
       else
         Movie.where(rating:ratings_list).order(sort_key)
