@@ -23,6 +23,7 @@ class MoviesController < ApplicationController
     end
     @movies = Movie.with_ratings(@ratings_to_show,session[:sort_key])
     #@ratings_to_show = params[:ratings].keys
+    redirect_to movies_path
   end
 
   def new
