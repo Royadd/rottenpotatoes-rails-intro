@@ -12,6 +12,7 @@ class MoviesController < ApplicationController
     end
     if params[:sort_key]!=nil
       session[:sort_key]=params[:sort_key]
+      redirect_to movies_path
       #@css_class_2='.bg_warning'
     end
     @sort_column=session[:sort_key]
@@ -20,10 +21,11 @@ class MoviesController < ApplicationController
       @ratings_to_show=@all_ratings
     else
       @ratings_to_show = session[:ratings].keys
+      redirect_to movies_path
     end
     @movies = Movie.with_ratings(@ratings_to_show,session[:sort_key])
     #@ratings_to_show = params[:ratings].keys
-    redirect_to movies_path
+    #redirect_to movies_path
   end
 
   def new
