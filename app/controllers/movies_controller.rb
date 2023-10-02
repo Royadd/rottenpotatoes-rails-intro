@@ -7,10 +7,10 @@ class MoviesController < ApplicationController
   end
 
   def index
-    if not params[:ratings].empty?
+    if params[:ratings]!=nil
       session[:ratings]=params[:ratings]
     end
-    if not params[:sort_key].empty?
+    if params[:sort_key]!=nil
       session[:sort_key]=params[:sort_key]
     end
 
