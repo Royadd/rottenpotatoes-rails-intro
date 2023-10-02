@@ -7,8 +7,6 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @css_class_title=nil
-    @css_class_date=nil
     if not params.has_key?(:home)
       session[:ratings]=params[:ratings]
     end
@@ -19,7 +17,7 @@ class MoviesController < ApplicationController
     @sort_column=session[:sort_key]
     @all_ratings = Movie.all_ratings
     if session[:ratings]==nil
-      @ratings_to_show=[]
+      @ratings_to_show=@all_ratings
     else
       @ratings_to_show = session[:ratings].keys
     end
