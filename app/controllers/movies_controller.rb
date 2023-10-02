@@ -14,10 +14,9 @@ class MoviesController < ApplicationController
     end
     if params[:sort_key]!=nil
       session[:sort_key]=params[:sort_key]
-      @sort_column=session[:sort_key]
       #@css_class_2='.bg_warning'
     end
-
+    @sort_column=session[:sort_key]
     @all_ratings = Movie.all_ratings
     if session[:ratings]==nil
       @ratings_to_show=[]
