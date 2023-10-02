@@ -7,13 +7,18 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @css_class_title=nil
+    @css_class_date=nil
     if not params.has_key?(:home)
       session[:ratings]=params[:ratings]
     end
     if params[:sort_key]!=nil
       session[:sort_key]=params[:sort_key]
-      @css_class_1='hilite'
-      @css_class_2='.bg_warning'
+      if session[:sort_key]=="title"
+        @css_class_title='hilite bg_warning'
+      else
+        @css_class_date='hilite bg_warning'
+      #@css_class_2='.bg_warning'
     end
 
     @all_ratings = Movie.all_ratings
