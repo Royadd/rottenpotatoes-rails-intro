@@ -8,7 +8,9 @@ class MoviesController < ApplicationController
 
   def index
     if not params.has_key?(:home)
-      session[:ratings]=params[:ratings]
+      if params[:ratings]!=nil
+        session[:ratings]=params[:ratings]
+      end
     end
     """if params[:home]=='no'
       redirect_to movies_path(sort_key: session[:sort_key], ratings: session[:ratings])
