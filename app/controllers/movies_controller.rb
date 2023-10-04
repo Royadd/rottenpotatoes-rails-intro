@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
       #redirect_to movies_path
     end
     #@ratings_to_show = params[:ratings].keys
-    if session[:sort_key]!=nil or session[:ratings]!=nil
+    if session.has_key?(:sort_key) or session.has_key?(:ratings)
       redirect_to movies_path(sort_key: session[:sort_key], ratings: session[:ratings])
       return
     end
