@@ -15,6 +15,7 @@ class MoviesController < ApplicationController
     if params[:sort_key]!=nil
       session[:sort_key]=params[:sort_key]
     end
+    @sort_column=session[:sort_key]
     @all_ratings = Movie.all_ratings
     if session[:ratings]==nil
       @ratings_to_show=@all_ratings
@@ -25,7 +26,7 @@ class MoviesController < ApplicationController
       redirect_to movies_path(sort_key: session[:sort_key], ratings: session[:ratings])
       return
     end
-    @movies = Movie.with_ratings(@ratings_to_show,session[:sort_key])
+    @movies = Movie.with_ratings(@ratings_to_show,@sort_column)
   end
 
   def new
